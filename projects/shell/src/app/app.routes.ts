@@ -9,11 +9,6 @@ import {
 } from '@angular-architects/module-federation-tools';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-const domain =
-  process.env.NODE_ENV === 'production'
-    ? process.env.PRODUCTION_DOMAIN
-    : 'http://localhost:4204';
-
 export const APP_ROUTES: Routes = [
   {
     path: '',
