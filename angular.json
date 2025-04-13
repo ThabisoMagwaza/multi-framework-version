@@ -328,5 +328,8 @@
 			}
 		}
 	},
-	"defaultProject": "mfe1"
+  "defaultProject": "mfe1",
+  "cli": {
+    "analytics": false
+  }
 }

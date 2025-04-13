@@ -4,36 +4,37 @@ import { AuthLibService } from 'auth-lib';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-
   userName: string = '';
 
   props = {
-    "message": "Hello from Shell"
-  }
+    message: 'Hello from Shell',
+  };
 
   events = {
-    "clicked": (event) => {
+    clicked: (event) => {
       console.debug('clicked!', event);
-    }
-  }
+    },
+  };
 
   options: WebComponentWrapperOptions = {
-    remoteEntry: 'https://nice-grass-018f7d910.azurestaticapps.net/remoteEntry.js',
+    remoteEntry:
+      'https://nice-grass-018f7d910.azurestaticapps.net/remoteEntry.js',
     remoteName: 'angular1',
     exposedModule: './web-components',
-    elementName: 'angular1-element'
-  }
+    elementName: 'angular1-element',
+  };
 
-  constructor(private authService: AuthLibService, private cd: ChangeDetectorRef) { }
+  constructor(
+    private authService: AuthLibService,
+    private cd: ChangeDetectorRef
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
     this.authService.login(this.userName, null);
   }
-
 }
