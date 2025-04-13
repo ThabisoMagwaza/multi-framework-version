@@ -55,6 +55,18 @@ export const APP_ROUTES: Routes = [
   },
 
   {
+    path: 'angular2',
+    component: WebComponentWrapper,
+    data: {
+      remoteEntry:
+        'https://gray-pond-030798810.azurestaticapps.net//remoteEntry.js',
+      remoteName: 'angular2',
+      exposedModule: './web-components',
+      elementName: 'angular2-element',
+    } as WebComponentWrapperOptions,
+  },
+
+  {
     matcher: startsWith('angular3'),
     component: WebComponentWrapper,
     data: {
