@@ -50,7 +50,7 @@ export const APP_ROUTES: Routes = [
     path: 'react',
     component: WebComponentWrapper,
     data: {
-      remoteEntry: `${domain}/remoteEntry.js`,
+      remoteEntry: `https://d1f2oviiofygpt.cloudfront.net/marketing/latest/remoteEntry.js`,
       remoteName: 'react',
       exposedModule: './web-components',
       elementName: 'react-element',
@@ -62,7 +62,7 @@ export const APP_ROUTES: Routes = [
     component: WebComponentWrapper,
     data: {
       remoteEntry:
-        'https://gray-pond-030798810.azurestaticapps.net//remoteEntry.js',
+        'https://gray-pond-030798810.azurestaticapps.net/remoteEntry.js',
       remoteName: 'angular2',
       exposedModule: './web-components',
       elementName: 'angular2-element',
