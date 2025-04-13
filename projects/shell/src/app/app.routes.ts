@@ -9,7 +9,10 @@ import {
 } from '@angular-architects/module-federation-tools';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-let URL = 'http://localhost:3000/remoteEntry.js';
+const domain =
+  process.env.NODE_ENV === 'production'
+    ? process.env.PRODUCTION_DOMAIN
+    : 'http://localhost:4204';
 
 export const APP_ROUTES: Routes = [
   {
@@ -47,7 +50,7 @@ export const APP_ROUTES: Routes = [
     path: 'react',
     component: WebComponentWrapper,
     data: {
-      remoteEntry: 'http://localhost:4204/remoteEntry.js',
+      remoteEntry: `${domain}/remoteEntry.js`,
       remoteName: 'react',
       exposedModule: './web-components',
       elementName: 'react-element',
