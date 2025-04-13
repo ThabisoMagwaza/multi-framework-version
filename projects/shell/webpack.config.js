@@ -3,7 +3,7 @@ const {
   withModuleFederationPlugin,
 } = require("@angular-architects/module-federation/webpack");
 
-module.exports = withModuleFederationPlugin({
+const config = withModuleFederationPlugin({
   shared: {
     ...shareAll({
       singleton: true,
@@ -11,9 +11,13 @@ module.exports = withModuleFederationPlugin({
       requiredVersion: "auto",
     }),
   },
+});
 
+module.exports = {
+  ...config,
   output: {
+    ...config.output,
     publicPath:
       process.env.NODE_ENV === "production" ? "/container/latest/" : "/",
   },
-});
+};
