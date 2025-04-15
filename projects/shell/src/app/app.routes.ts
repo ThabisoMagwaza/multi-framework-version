@@ -21,7 +21,7 @@ export const APP_ROUTES: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'react',
+    path: 'admin',
     component: WebComponentWrapper,
     data: {
       remoteEntry: `https://d1f2oviiofygpt.cloudfront.net/marketing/latest/remoteEntry.js`,
