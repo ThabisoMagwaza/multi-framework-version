@@ -2,7 +2,13 @@
   <header class="header">
     <h1>Welcome to Our Store</h1>
     <div class="header-actions">
-      <button class="cart-button" (click)="navigateToReact()">View Cart</button>
+      <button class="cart-button" (click)="navigateToReact()">
+        <span class="cart-icon">🛒</span>
+        Cart
+        <span class="cart-count" *ngIf="cartItemCount > 0">{{
+          cartItemCount
+        }}</span>
+      </button>
       <button
         class="login-button"
         *ngIf="!isLoggedIn"

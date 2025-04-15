@@ -1,0 +1,51 @@
+<div class="cart-container">
+  <h1>Shopping Cart</h1>
+
+  <ng-container *ngIf="(cartItems$ | async)?.length; else emptyCart">
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems$ | async" class="cart-item">
+        <img [src]="item.image" [alt]="item.name" class="item-image" />
+        <div class="item-details">
+          <h3>{{ item.name }}</h3>
+          <p class="item-price">${{ item.price.toFixed(2) }}</p>
+        </div>
+        <div class="quantity-controls">
+          <button (click)="updateQuantity(item, -1)" class="quantity-btn">
+            -
+          </button>
+          <span class="quantity">{{ item.quantity }}</span>
+          <button (click)="updateQuantity(item, 1)" class="quantity-btn">
+            +
+          </button>
+        </div>
+        <p class="item-total">${{ (item.price * item.quantity).toFixed(2) }}</p>
+        <button class="remove-btn" (click)="removeItem(item.id)">×</button>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Total</span>
+        <span class="total-price">${{ getTotal().toFixed(2) }}</span>
+      </div>
+      <div class="cart-actions">
+        <button class="clear-cart" (click)="clearCart()">Clear Cart</button>
+        <button class="continue-shopping" (click)="continueShopping()">
+          Continue Shopping
+        </button>
+        <button class="checkout" (click)="checkout()">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <p>Your cart is empty</p>
+      <button class="continue-shopping" (click)="continueShopping()">
+        Start Shopping
+      </button>
+    </div>
+  </ng-template>
+</div>

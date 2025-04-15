@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SharedDataService } from '../services/shared-data.service';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 interface Product {
   id: number;
@@ -71,16 +71,22 @@ export class HomeComponent {
   categories = ['All', 'Electronics', 'Fashion', 'Sports'];
   selectedCategory: string = 'All';
   isLoggedIn: boolean = false;
+  cartItemCount: number = 0;
 
-  constructor(
-    private sharedDataService: SharedDataService,
-    private router: Router
-  ) {
+  constructor(private cartService: CartService, private router: Router) {
     // Check if user is logged in
     const shellData = localStorage.getItem('shellData');
     if (shellData) {
       this.isLoggedIn = JSON.parse(shellData).isAuthenticated;
     }
+
+    // Subscribe to cart updates
+    this.cartService.cart$.subscribe((items) => {
+      this.cartItemCount = items.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
+    });
   }
 
   get filteredProducts(): Product[] {
@@ -97,15 +103,11 @@ export class HomeComponent {
   }
 
   addToCart(product: Product) {
-    this.sharedDataService.setData({
-      type: 'ADD_TO_CART',
-      product: product,
-    });
-    this.router.navigate(['/react']);
+    this.cartService.addToCart(product);
   }
 
   navigateToReact() {
-    this.router.navigate(['/react']);
+    this.router.navigate(['/cart']);
   }
 
   navigateToLogin() {

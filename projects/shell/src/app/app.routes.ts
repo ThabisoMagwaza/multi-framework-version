@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactWrapperComponent } from './components/react-wrapper.component';
 import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 import {
   startsWith,
   WebComponentWrapper,
@@ -19,6 +20,10 @@ export const APP_ROUTES: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
   },
   {
     path: 'admin',
@@ -40,6 +45,16 @@ export const APP_ROUTES: Routes = [
   //     elementName: 'react-element',
   //   } as WebComponentWrapperOptions,
   // },
+  {
+    path: 'react',
+    component: ReactWrapperComponent,
+    data: {
+      remoteEntry: `http://localhost:4204/remoteEntry.js`,
+      remoteName: 'react',
+      exposedModule: './web-components',
+      elementName: 'react-element',
+    } as WebComponentWrapperOptions,
+  },
   {
     path: '**',
     component: NotFoundComponent,

@@ -8,6 +8,8 @@ import { APP_ROUTES } from './app.routes';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactWrapperComponent } from './components/react-wrapper.component';
 import { LoginComponent } from './login/login.component';
+import { CartService } from './services/cart.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
@@ -22,8 +24,9 @@ import { LoginComponent } from './login/login.component';
     NotFoundComponent,
     ReactWrapperComponent,
     LoginComponent,
+    CartComponent,
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
