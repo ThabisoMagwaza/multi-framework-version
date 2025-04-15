@@ -2,6 +2,7 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ReactWrapperComponent } from './components/react-wrapper.component';
 import {
   startsWith,
   WebComponentWrapper,
@@ -27,7 +28,7 @@ export const APP_ROUTES: Routes = [
   // },
   {
     path: 'react',
-    component: WebComponentWrapper,
+    component: ReactWrapperComponent,
     data: {
       remoteEntry: `http://localhost:4204/remoteEntry.js`,
       remoteName: 'react',
