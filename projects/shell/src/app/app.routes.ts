@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactWrapperComponent } from './components/react-wrapper.component';
+import { LoginComponent } from './login/login.component';
 import {
   startsWith,
   WebComponentWrapper,
@@ -15,7 +16,10 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
     pathMatch: 'full',
   },
-
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   // {
   //   path: 'react',
   //   component: WebComponentWrapper,
@@ -27,7 +31,7 @@ export const APP_ROUTES: Routes = [
   //   } as WebComponentWrapperOptions,
   // },
   {
-    path: 'react',
+    path: 'admin',
     component: ReactWrapperComponent,
     data: {
       remoteEntry: `http://localhost:4204/remoteEntry.js`,
