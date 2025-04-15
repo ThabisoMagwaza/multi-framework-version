@@ -20,26 +20,26 @@ export const APP_ROUTES: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  // {
-  //   path: 'react',
-  //   component: WebComponentWrapper,
-  //   data: {
-  //     remoteEntry: `https://d1f2oviiofygpt.cloudfront.net/marketing/latest/remoteEntry.js`,
-  //     remoteName: 'react',
-  //     exposedModule: './web-components',
-  //     elementName: 'react-element',
-  //   } as WebComponentWrapperOptions,
-  // },
   {
-    path: 'admin',
-    component: ReactWrapperComponent,
+    path: 'react',
+    component: WebComponentWrapper,
     data: {
-      remoteEntry: `http://localhost:4204/remoteEntry.js`,
+      remoteEntry: `https://d1f2oviiofygpt.cloudfront.net/marketing/latest/remoteEntry.js`,
       remoteName: 'react',
       exposedModule: './web-components',
       elementName: 'react-element',
     } as WebComponentWrapperOptions,
   },
+  // {
+  //   path: 'admin',
+  //   component: ReactWrapperComponent,
+  //   data: {
+  //     remoteEntry: `http://localhost:4204/remoteEntry.js`,
+  //     remoteName: 'react',
+  //     exposedModule: './web-components',
+  //     elementName: 'react-element',
+  //   } as WebComponentWrapperOptions,
+  // },
   {
     path: '**',
     component: NotFoundComponent,
