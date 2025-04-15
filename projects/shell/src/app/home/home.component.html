@@ -1,4 +1,42 @@
-<h1>Welcome!</h1>
-<p>To our shell app: We must add tailwind css!</p>
+<div class="store-container">
+  <header class="header">
+    <h1>Welcome to Our Store</h1>
+    <div class="header-actions">
+      <button class="cart-button" (click)="navigateToReact()">View Cart</button>
+      <button
+        class="login-button"
+        *ngIf="!isLoggedIn"
+        (click)="navigateToLogin()"
+      >
+        Login
+      </button>
+    </div>
+  </header>
+
+  <div class="categories">
+    <button
+      *ngFor="let cat of categories"
+      [class.active]="selectedCategory === cat"
+      (click)="selectCategory(cat)"
+      class="category-button"
+    >
+      {{ cat }}
+    </button>
+  </div>
+
+  <div class="products-grid">
+    <div *ngFor="let product of filteredProducts" class="product-card">
+      <img [src]="product.image" [alt]="product.name" class="product-image" />
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="description">{{ product.description }}</p>
+        <p class="price">${{ product.price.toFixed(2) }}</p>
+        <button class="add-to-cart" (click)="addToCart(product)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- <mft-wc-wrapper [props]="props" [events]="events" [options]="options"></mft-wc-wrapper> -->
